@@ -1,60 +1,26 @@
-<?php
-/**
- * The template for displaying 404 pages (not found)
- *
- * @link https://codex.wordpress.org/Creating_an_Error_404_Page
- *
- * @package team9
- */
+<?php get_header(); ?>
+	<main id="content" class="content">
+	<?php do_action( 'basic_main_content_404_inner_begin' ); ?>
 
-get_header();
-?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+    <?php do_action( 'basic_before_page_404_article' ); ?>
+    <div class="post clearfix">
+	    <h1><?php _e( 'Oops! That page can&rsquo;t be found.', 'basic' ); ?></h1>
 
-			<section class="error-404 not-found">
-				<header class="page-header">
-					<h1 class="page-title"><?php esc_html_e( 'Oops! That page can&rsquo;t be found.', 'team9' ); ?></h1>
-				</header><!-- .page-header -->
+	    <?php do_action( 'basic_before_page_404_content_box' );  ?>
+        <div class="entry-box clearfix">
+            <p><?php _e( 'It looks like nothing was found at this location. Maybe try a search?', 'basic' ); ?></p>
+            <?php get_search_form(); ?>
+        </div>
+	    <?php do_action( 'basic_after_page_404_content_box' );  ?>
 
-				<div class="page-content">
-					<p><?php esc_html_e( 'It looks like nothing was found at this location. Maybe try one of the links below or a search?', 'team9' ); ?></p>
+    </div>
+    <?php do_action( 'basic_after_page_404_article' ); ?>
 
-					<?php
-					get_search_form();
 
-					the_widget( 'WP_Widget_Recent_Posts' );
-					?>
-
-					<div class="widget widget_categories">
-						<h2 class="widget-title"><?php esc_html_e( 'Most Used Categories', 'team9' ); ?></h2>
-						<ul>
-							<?php
-							wp_list_categories( array(
-								'orderby'    => 'count',
-								'order'      => 'DESC',
-								'show_count' => 1,
-								'title_li'   => '',
-								'number'     => 10,
-							) );
-							?>
-						</ul>
-					</div><!-- .widget -->
-
-					<?php
-					/* translators: %1$s: smiley */
-					$team9_archive_content = '<p>' . sprintf( esc_html__( 'Try looking in the monthly archives. %1$s', 'team9' ), convert_smilies( ':)' ) ) . '</p>';
-					the_widget( 'WP_Widget_Archives', 'dropdown=1', "after_title=</h2>$team9_archive_content" );
-
-					the_widget( 'WP_Widget_Tag_Cloud' );
-					?>
-
-				</div><!-- .page-content -->
-			</section><!-- .error-404 -->
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_footer();
+	<?php do_action( 'basic_main_content_404_inner_end' ); ?>
+	</main> 
+	<!-- END #content -->
+	
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

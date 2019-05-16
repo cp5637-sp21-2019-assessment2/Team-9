@@ -1,53 +1,57 @@
-<?php
-/**
- * The template for displaying archive pages
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package team9
- */
+<?php get_header(); ?>
+	<main id="content">
 
-get_header();
-?>
+<?php if (have_posts()) :
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+	$post = $posts[0];
+	$not_paged = get_query_var('paged');
+	$not_paged = ( empty($not_paged) ) ? true : false;
 
-		<?php if ( have_posts() ) : ?>
+	?>
 
-			<header class="page-header">
-				<?php
-				the_archive_title( '<h1 class="page-title">', '</h1>' );
-				the_archive_description( '<div class="archive-description">', '</div>' );
-				?>
-			</header><!-- .page-header -->
+	<header class="inform">
+	<?php if (is_category()) : ?>
+		<h1><?php _e( 'Category', 'basic' ); ?> &laquo;<?php single_cat_title(''); ?>&raquo;</h1>
+		<?php if ( $not_paged ) echo '<div class="archive-desc">'. category_description() .'</div>'; ?>
+	<?php elseif( is_tag() ) : ?>
+		<h1><?php _e( 'Tag', 'basic' ); ?> &laquo;<?php single_tag_title(); ?>&raquo;</h1>
+		<?php if ( $not_paged ) echo '<div class="archive-desc">'. tag_description() .'</div>'; ?>
+	<?php elseif (is_day()) : ?>
+		<h1><?php _e( 'Day archives:', 'basic' ); ?> <?php the_time('F jS, Y'); ?></h1>
+	<?php elseif (is_month()) : ?>
+		<h1><?php _e( 'Monthly archives:', 'basic' ); ?> <?php the_time('F, Y'); ?></h1>
+	<?php elseif (is_year()) : ?>
+		<h1><?php _e( 'Year archives:', 'basic' ); ?> <?php the_time('Y'); ?></h1>
+	<?php elseif (is_author()) : ?>
+		<h1><?php _e( 'Author archives', 'basic' ); ?></h1>
+		<div class="archive-desc"><?php the_author_meta('description'); ?></div>
+	<?php elseif (isset($_GET['paged']) && !empty($_GET['paged'])) : ?>
+		<h1 class="arhivetitle"><?php _e( 'Archive', 'basic' ); ?></h1>
+ 	<?php endif; ?>
+	</header>
 
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
+	<?php while (have_posts()) : the_post(); 
 
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
+		get_template_part( 'content' ); 
 
-			endwhile;
+	endwhile;
 
-			the_posts_navigation();
+	the_posts_pagination( apply_filters( 'basic_archive_posts_pagination_args', array(
+		'mid_size' => 2,
+		'prev_text' => __( '&laquo; Prev', 'basic'),
+		'next_text' => __( 'Next &raquo;', 'basic'),
+	)) );
 
-		else :
 
-			get_template_part( 'template-parts/content', 'none' );
+else: ?>
+		
+	<div class="post">
+		<h1><?php _e( 'Posts not found', 'basic' ); ?></h1>
+		<?php get_search_form(); ?>
+	 </div>
+		
+<?php endif; ?>
 
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+	</main> <!-- #content -->
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>

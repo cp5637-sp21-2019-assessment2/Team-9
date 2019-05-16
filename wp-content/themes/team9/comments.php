@@ -1,75 +1,46 @@
 <?php
-/**
- * The template for displaying comments
- *
- * This is the template that displays the area of the page that contains both the current comments
- * and the comment form.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package team9
- */
-
-/*
- * If the current post is protected by a password and
- * the visitor has not yet entered the password we will
- * return early without loading the comments.
- */
-if ( post_password_required() ) {
+if ( post_password_required() )
 	return;
-}
 ?>
 
 <div id="comments" class="comments-area">
 
-	<?php
-	// You can start editing here -- including this comment!
-	if ( have_comments() ) :
-		?>
-		<h2 class="comments-title">
-			<?php
-			$team9_comment_count = get_comments_number();
-			if ( '1' === $team9_comment_count ) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'team9' ),
-					'<span>' . get_the_title() . '</span>'
+<?php if ( have_comments() ) : ?>
+	<h3 class="comments-title"><?php _e('Comments', 'basic'); ?> <span class="cnt"><i class="fa fa-comments-o"></i><?php comments_number('0', '1', '%' );?></span></h3>
+
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :  ?>
+		<div class="comment-navigation">
+			<div class="nav-prev"><?php previous_comments_link( __('&larr; Older Comments', 'basic') ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __('Newer Comments &rarr;', 'basic') ); ?></div>
+		</div>
+		<?php endif; ?>
+
+		<?php do_action( 'basic_before_comment_list' ); ?>
+		<ul class="comment-list">
+			<?php 
+				$comm_args = array( 
+					'avatar_size' => '60',
+					'callback' => 'basic_html5_comment' 
 				);
-			} else {
-				printf( // WPCS: XSS OK.
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $team9_comment_count, 'comments title', 'team9' ) ),
-					number_format_i18n( $team9_comment_count ),
-					'<span>' . get_the_title() . '</span>'
-				);
-			}
+				if ( basic_get_theme_option('schema_mark') ) {
+					$comm_args['callback'] = 'basic_schemaorg_html5_comment';
+				}
+				wp_list_comments( $comm_args ); 
 			?>
-		</h2><!-- .comments-title -->
+		</ul><!-- .comment-list -->
+		<?php do_action( 'basic_after_comment_list' ); ?>
 
-		<?php the_comments_navigation(); ?>
+		<?php if ( get_comment_pages_count() > 1 && get_option( 'page_comments' ) ) :  ?>
+		<div class="comment-navigation">
+			<div class="nav-prev"><?php previous_comments_link( __('&larr; Older Comments', 'basic') ); ?></div>
+			<div class="nav-next"><?php next_comments_link( __('Newer Comments &rarr;', 'basic') ); ?></div>
+		</div>
+		<?php endif; ?>
 
-		<ol class="comment-list">
-			<?php
-			wp_list_comments( array(
-				'style'      => 'ol',
-				'short_ping' => true,
-			) );
-			?>
-		</ol><!-- .comment-list -->
+<?php endif; // have_comments()
 
-		<?php
-		the_comments_navigation();
-
-		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
-			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'team9' ); ?></p>
-			<?php
-		endif;
-
-	endif; // Check for have_comments().
-
+	do_action( 'basic_before_comment_form' );
 	comment_form();
-	?>
+	do_action( 'basic_after_comment_form' ); ?>
 
 </div><!-- #comments -->

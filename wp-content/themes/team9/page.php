@@ -1,40 +1,37 @@
-<?php
-/**
- * The template for displaying all pages
- *
- * This is the template that displays all pages by default.
- * Please note that this is the WordPress construct of pages
- * and that other 'pages' on your WordPress site may use a
- * different template.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package team9
- */
+<?php get_header(); ?>
+	<main id="content" class="content">
 
-get_header();
-?>
+		<?php while ( have_posts() ) : the_post(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+			<?php do_action( 'basic_before_page_article' ); ?>
+			<article class="post page" id="pageid-<?php the_ID(); ?>">
+				
+				<?php do_action( 'basic_before_page_title' );  ?>
+				<h1><?php the_title(); ?></h1>
+				<?php do_action( 'basic_after_page_title' );  ?>
 
-		<?php
-		while ( have_posts() ) :
-			the_post();
+				<?php do_action( 'basic_before_page_content_box' );  ?>
+				<div class="entry-box clearfix">
+					<?php do_action( 'basic_before_page_content' );  ?>
+					<?php the_content(); ?>
+					<?php do_action( 'basic_after_page_content' );  ?>
+				</div>
+				<?php do_action( 'basic_after_page_content_box' );  ?>
 
-			get_template_part( 'template-parts/content', 'page' );
+			</article>
+			<?php do_action( 'basic_after_page_article' ); ?>
 
-			// If comments are open or we have at least one comment, load up the comment template.
-			if ( comments_open() || get_comments_number() ) :
+
+			<?php 
+
+			if ( comments_open() || get_comments_number() ) {
+				do_action( 'basic_before_page_comments_area' );
 				comments_template();
-			endif;
+				do_action( 'basic_after_page_comments_area' );
+			}
 
-		endwhile; // End of the loop.
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
-
-<?php
-get_sidebar();
-get_footer();
+		endwhile; ?>
+		
+	</main> <!-- #content -->
+	<?php get_sidebar(); ?>
+<?php get_footer(); ?>
