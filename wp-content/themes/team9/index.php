@@ -1,59 +1,41 @@
-<?php
-/**
- * The main template file
- *
- * This is the most generic template file in a WordPress theme
- * and one of the two required files for a theme (the other being style.css).
- * It is used to display a page when nothing more specific matches a query.
- * E.g., it puts together the home page when no home.php file exists.
- *
- * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
- *
- * @package team9
- */
+<?php get_header(); ?>
+<main id="content" class="content">
+<?php do_action( 'basic_main_content_inner_begin' ); ?>
 
-get_header();
-?>
+   <?php if ( is_home() && 'customtitle' == get_theme_mod( 'home_h1_type', 'sitetitle' )  ) { ?>
+       <div class="blog-home-header">
+           <h1><?php echo get_theme_mod( 'custom_home_h1', get_bloginfo('sitetitle') ); ?></h1>
+       </div>
+   <?php } ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main">
+<?php if (have_posts()) :
+while (have_posts()) : the_post(); 
 
-		<?php
-		if ( have_posts() ) :
+get_template_part( 'content' ); 
 
-			if ( is_home() && ! is_front_page() ) :
-				?>
-				<header>
-					<h1 class="page-title screen-reader-text"><?php single_post_title(); ?></h1>
-				</header>
-				<?php
-			endif;
-
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/*
-				 * Include the Post-Type-specific template for the content.
-				 * If you want to override this in a child theme, then include a file
-				 * called content-___.php (where ___ is the Post Type name) and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', get_post_type() );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-		</main><!-- #main -->
-	</div><!-- #primary -->
+endwhile; ?>
 
 <?php
-get_sidebar();
-get_footer();
+
+the_posts_pagination( apply_filters( 'basic_posts_pagination_args', array(
+'mid_size' => 2,
+'prev_text' => __( '&laquo; Prev', 'basic'),
+'next_text' => __( 'Next &raquo;', 'basic'),
+) ) );
+
+
+else: ?>
+
+<div class="post clearfix">	
+   <h2><?php _e( 'Posts not found', 'basic' ); ?></h2>
+   <?php get_search_form(); ?>
+</div>
+
+<?php endif; ?>
+
+<?php do_action( 'basic_main_content_inner_end' ); ?>
+</main> 
+<!-- END #content -->
+
+<?php get_sidebar(); ?>
+<?php get_footer(); ?>
