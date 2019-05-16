@@ -279,18 +279,6 @@ function basic_customizer_init( $wp_customize ) {
 	$wp_customize->remove_section( 'colors' );
 
 
-	/*----------  L A Y O U T   ----------*/
-
-	// content custom section
-	$wp_customize->add_section(
-		'layout',
-		array(
-			'title'       => __( 'Design', 'basic' ),
-			'priority'    => 80,
-			'description' => __( 'Main theme options', 'basic' )
-		)
-	);
-
 	// ----
 	$wp_customize->add_setting(
 		BASIC_OPTION_NAME . '[maincolor]',
@@ -657,19 +645,6 @@ function basic_customizer_init( $wp_customize ) {
 		)
 	);
 
-	// -------  S O C I A L ------------------------------------------------------------------
-
-	$wp_customize->add_section( 'social',
-		array(
-			'title'       => __( 'Social', 'basic' ),
-			'description' => __( 'Social buttons', 'basic' ),
-			'priority'    => 81,
-			'panel'       => 'basic_single_options',
-		)
-	);
-
-	// ----
-
 	$wp_customize->add_setting(
 		BASIC_OPTION_NAME . '[add_social_meta]',
 		array(
@@ -756,19 +731,6 @@ function basic_customizer_init( $wp_customize ) {
 	);
 
 
-	// --------  S T U C T U R E D   D A T A   --------------------------------------------------
-
-	$wp_customize->add_section(
-		'basic_structured_data',
-		array(
-			'title'    => __( 'Structured Data', 'basic' ),
-			'priority' => 82,
-			'panel'    => 'basic_single_options',
-		)
-	);
-
-	// ----
-
 	$wp_customize->add_setting(
 		BASIC_OPTION_NAME . '[schema_mark]',
 		array(
@@ -853,17 +815,6 @@ function basic_customizer_init( $wp_customize ) {
 	) );
 
 
-	// --------  Advertisement   C O D E S  --------------------------------------------------
-
-	$wp_customize->add_section( 'basic_advertisement',
-		array(
-			'title'       => __( 'Advertisement', 'basic' ),
-			'description' => __( 'Setup advertisement before and after post content', 'basic' ),
-			'panel'       => 'basic_single_options',
-		)
-	);
-
-	// ----
 
 	$wp_customize->add_setting(
 		BASIC_OPTION_NAME . '[before_content]',
@@ -904,18 +855,6 @@ function basic_customizer_init( $wp_customize ) {
 			'type'        => 'textarea',
 		)
 	);
-
-
-	// --------  C U S T O M   C O D E S  --------------------------------------------------
-
-	$wp_customize->add_section( 'basic_custom_code',
-		array(
-			'title'       => __( 'Custom codes', 'basic' ),
-			'description' => __( 'It helps you to setup custom scripts and styles', 'basic' ),
-			'priority'    => 91,
-		)
-	);
-
 
 	// ----
 
