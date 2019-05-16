@@ -1062,18 +1062,6 @@ function basic_customizer_init( $wp_customize ) {
 
 	// ----------  A D D I T I O N A L   C U S T O M   D E S I G N  ----------
 
-
-	$wp_customize->add_section(
-		'basic_additional_design',
-		array(
-			'title'       => __( 'Design skins for theme BASIC', 'basic' ),
-			'description' => __( 'Get child theme with additional design!', 'basic' ),
-			'priority'    => 2,
-		)
-	);
-
-	// ----
-
 	//
 	$wp_customize->add_setting( 'basicchild_callmetomato', array(
 		'type'              => 'option',
@@ -1231,14 +1219,6 @@ function basic_customizer_init( $wp_customize ) {
 
 	// ----------  A D D I T I O N A L   C U S T O M   D E S I G N  ----------
 
-
-	$wp_customize->add_section( 'basic_other_themes',
-		array(
-			'title'       => __( 'WP Puzzle Themes', 'basic' ),
-			'description' => __( 'Choose great premium themes by WP Puzzle Shop!', 'basic' ),
-			'priority'    => 1,
-		)
-	);
 
 	//
 	$wp_customize->add_setting( 'basic_other_simplepuzzle', array(
