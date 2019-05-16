@@ -296,7 +296,7 @@ function basic_customizer_init( $wp_customize ) {
 		BASIC_OPTION_NAME . '[maincolor]',
 		array(
 			'type'              => 'option',
-			'default'           => '#936',
+			'default'           => '#E74C3C;',
 			'priority'          => 10,
 			'sanitize_callback' => 'sanitize_hex_color',
 			'transport'         => $transport
