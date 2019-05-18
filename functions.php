@@ -121,9 +121,9 @@ function team9_scripts() {
 
 	wp_enqueue_script('team9-bootstrap', get_template_directory_uri() . '/src/js/bootstrap.min.js', array('jquery'), '20170915', true);
 
-	wp_enqueue_script('team9-bootstrap-hover', get_template_directory_uri() . 'src/js/bootstrap-hover.js', array('jquery'), '20170115', true);
+	wp_enqueue_script('team9-bootstrap-hover', get_template_directory_uri() . '/src/js/bootstrap-hover.js', array('jquery'), '20170115', true);
 
-	wp_enqueue_script('team9-nav-scroll', get_template_directory_uri() . 'src/js/nav-scroll.js', array('jquery'), '20170115', true);
+	wp_enqueue_script('team9-nav-scroll', get_template_directory_uri() . '/src/js/nav-scroll.js', array('jquery'), '20170115', true);
 
 
 	wp_enqueue_script( 'team9-skip-link-focus-fix', get_template_directory_uri() . '/src/js/skip-link-focus-fix.js', array(), '20151215', true );
