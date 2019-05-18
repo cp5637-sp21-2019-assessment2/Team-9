@@ -33,6 +33,8 @@
 
 	<div class="entry-content">
 		<?php
+
+		if(is_single()){
 		the_content( sprintf(
 			wp_kses(
 				/* translators: %s: Name of current post. Only visible to screen readers */
@@ -45,6 +47,10 @@
 			),
 			get_the_title()
 		) );
+	}
+	else{
+		the_excerpt();
+	}
 
 		wp_link_pages( array(
 			'before' => '<div class="page-links">' . esc_html__( 'Pages:', 'team9' ),
@@ -57,3 +63,4 @@
 		<?php team9_entry_footer(); ?>
 	</footer><!-- .entry-footer -->
 </article><!-- #post-<?php the_ID(); ?> -->
+<hr>

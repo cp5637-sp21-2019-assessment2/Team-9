@@ -136,6 +136,10 @@ hr {
 	margin-bottom: 1.5em;
 }
 
+.site-info{
+	text-align: center;
+}
+
 h1.site-title, p.site-title {
 	margin: 10px 0 0 -2px;
 	padding: 0;
@@ -150,6 +154,17 @@ h1.site-title, p.site-title {
 
 .site-title a:hover{
 	text-decoration: none;
+}
+
+.site-description{
+	font-size: 16px;
+	margin: 10px 00;
+	letter-spacing: 1px;
+}
+
+#masthead{
+	margin-bottom: 30px;
+
 }
 
 ul, ol {
@@ -190,9 +205,36 @@ figure {
 	/* Extra wide images within figure tags don't overflow the content area. */
 }
 
+.cat-links, .tags-links{
+	margin-right: 5px;
+}
+
+.cat-links a, .tags-links a, .edit-link a{
+	text-decoration: none;
+	text-transform: uppercase;
+	color: #2980b9;
+}
+
+.edit-link {
+	margin-left: 5px;
+}
+
+.cat-links a:focus, .cat-links a:hover, .tags-links a:focus, .tags-links a:hover, .edit-link a:focus, .edit-link a:hover {
+	border-bottom: solid 1px;
+	color: #2980b9;
+}
+
 table {
 	margin: 0 0 1.5em;
 	width: 100%;
+}
+
+h1.entry-title, h2.entry-title {
+	margin-top: 1em;
+}
+
+footer{
+	margin-top: 20px;
 }
 
 /*--------------------------------------------------------------
@@ -273,6 +315,8 @@ textarea:focus {
 
 select {
 	border: 1px solid #ccc;
+	padding: 10px;
+	width: 100%;
 }
 
 textarea {
@@ -487,6 +531,23 @@ a:hover, a:active {
 
 .widget select {
 	max-width: 100%;
+}
+
+/* Tag Cloud */
+
+.tagcloud a{
+	border: 1px solid;
+	border-radius: 2px;
+	display: inline-block;
+	line-height: 1;
+	margin: 0 2px 5px 0;
+	padding: 5px;
+}
+
+.tagcloud a:hover .tagcloud a:focused {
+	text-decoration: none;
+	color: #21759b;
+	outline: 0;
 }
 
 /*--------------------------------------------------------------
