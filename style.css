@@ -640,3 +640,23 @@ object {
 .gallery-caption {
 	display: block;
 }
+
+.navbar{
+	padding: 0px;
+}
+
+.nav-link{
+	background-color: #d64541;
+}
+
+a.nav-link{
+	padding: 20px 40px 20px 40px;
+}
+
+.bg-dark{
+	background-color: #d64541!important
+}
+
+a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
+	background-color:#1d2124!important
+}
