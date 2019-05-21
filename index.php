@@ -17,7 +17,34 @@ get_header();
 
 	<div id="primary" class="content-area col-md-12">
 		<main id="main" class="site-main">
+	<!--		<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
 
+			  <ol class="carousel-indicators">
+			    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+			    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			  </ol>
+
+			  <div class="carousel-inner" role="listbox">
+			    <?php $slider = get_posts(array('post_type' => 'slider', 'posts_per_page' => 3)); ?>
+			      <?php $count = 0; ?>
+			      <?php foreach($slider as $slide): ?>
+			      <div class="item <?php echo ($count == 0) ? 'active' : ''; ?>">
+			        <img src="<?php echo wp_get_attachment_url( get_post_thumbnail_id($slide->ID)) ?>" class="img-responsive"/>
+			      </div>
+			      <?php $count++; ?>
+			    <?php endforeach; ?>
+			  </div>
+
+			  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+			    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+			    <span class="sr-only">Previous</span>
+			  </a>
+			  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+			    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+			    <span class="sr-only">Next</span>
+			  </a>
+</div> -->
 		<?php
 		if ( have_posts() ) :
 
