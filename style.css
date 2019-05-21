@@ -58,8 +58,9 @@ textarea {
 	line-height: 1.5;
 }
 
-h1, h2, h3, h4, h5, h6 {
+a, h1, h2, h3, h4, h5, h6 {
 	clear: both;
+	color: #d64541;
 }
 
 p {
@@ -270,15 +271,11 @@ textarea {
 ## Links
 --------------------------------------------------------------*/
 a {
-	color: royalblue;
-}
-
-a:visited {
-	color: purple;
+	color: #d64541;
 }
 
 a:hover, a:focus, a:active {
-	color: midnightblue;
+	color: #cf000f;
 }
 
 a:focus {
