@@ -280,14 +280,17 @@ a {
 
 a:hover, a:focus, a:active {
 	color: #cf000f;
+	text-decoration: none;
 }
 
 a:focus {
 	outline: thin dotted;
+	text-decoration: none;
 }
 
 a:hover, a:active {
 	outline: 0;
+	text-decoration: none;
 }
 
 /*--------------------------------------------------------------

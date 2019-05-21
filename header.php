@@ -27,7 +27,7 @@
 	<a class="skip-link screen-reader-text" href="#content"><?php esc_html_e( 'Skip to content', 'team9' ); ?></a>
 
 	<header id="masthead" class="site-header">
-		<nav id="menu" class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation" >
+		<nav id="menu" class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation" style="margin-bottom: 30px;" >
 		<div class="site-branding navbar-brand">
 			<?php
 			the_custom_logo();
@@ -47,6 +47,7 @@
 			<?php endif; ?>
 		</div><!-- .site-branding -->
 <div class="col-md-11">
+
 	<?php
 
 	wp_nav_menu([
