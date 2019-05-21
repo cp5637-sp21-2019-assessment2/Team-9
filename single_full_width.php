@@ -1,7 +1,7 @@
 <?php
 /**
  *Template Name: Full width template
-  *Template Post Type: post
+ *Template Post Type: post
  * The template for displaying all single posts
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
